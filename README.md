@@ -1,6 +1,6 @@
 ## README
 
-Hiccup, training the C++ dragon.
+Hiccup, training the C/C++ dragon.
 
 ## Prepare
 

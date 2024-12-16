@@ -15,7 +15,7 @@ typedef struct Point {
 } Point;
 
 Point PointNew(int x, int y);
-bool PointEquals(const Point*, const Point*);
+int PointEquals(const Point*, const Point*);
 const char* PointToString(const Point*);
 
 #ifdef __cplusplus
