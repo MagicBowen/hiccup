@@ -6,7 +6,7 @@ extern "C" {
 #endif
 
 #define BASIC_MEM_QUOTA 1024   /* 基本内存配额，单位:MB */
-#define MAX_NUM_ALLOCATION 32  /* 每个进程的最大资源分配数目 */
+#define MAX_NUM_ALLOCATION 8  /* 每个进程的最大资源分配数目 */
 
 /**
  * 资源类型
@@ -42,11 +42,11 @@ typedef struct ProcessTag {
 } Process;
 
 /**
- * 对进程使用资源进行计费或层级计算
- * total为最终计算结果（根据消耗量的 cost 值）
- * level为根据 cost 的消耗层级计数
+ * 对进程使用资源进行 cost 及 penalty 计算
+ * total为最终计算结果（根据消耗量计算的 cost 值）
+ * penalty 基于 cost 计算的惩罚值
  */
-void compute_cost(const Process* proc, int* total, int* level);
+void compute_cost(const Process* proc, int* total, int* penalty);
 
 #ifdef __cplusplus
 }

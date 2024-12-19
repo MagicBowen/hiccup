@@ -17,15 +17,15 @@ TEST_CASE( "Test resouce cost compute" ) {
     proc.allocations[proc.numOfAllocations++] = &a3;
 
     int total = 0;
-    int levels = 0;
-    compute_cost(&proc, &total, &levels);
+    int penalty = 0;
+    compute_cost(&proc, &total, &penalty);
 
     // 手动计算期望值:
     // CPU: base 50 + (3-2)*10 = 50+10=60
     // MEM: base 30 + (2 * (2048-1024)*2)=30 + (2*1024*2)=30+4096=4126
     // IO:  base 20 + (14-3)*100*1.5=20+(11*100*1.5)=20+1650=1670
     // total = 60 + 4126 + 1670 = 5856
-    // IO资源 >12月, levels=1
+    // IO资源 >12S, penalty=1
     REQUIRE(total == 5856);
-    REQUIRE(levels == 1);
+    REQUIRE(penalty == 1);
 }

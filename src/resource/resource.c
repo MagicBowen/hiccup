@@ -1,6 +1,6 @@
 #include "hiccup/resource/resource.h"
 
-void compute_cost(const Process* proc, int* total, int* levels) {
+void compute_cost(const Process* proc, int* total, int* penalty) {
     int index = 0;
     int cost = 0;
     int exceed = 0;
@@ -40,10 +40,10 @@ void compute_cost(const Process* proc, int* total, int* levels) {
             break;
         }
 
-        /* 如果是 IO 资源且使用时间 > 12s，对levels计数加1 */
+        /* 如果是 IO 资源且使用时间 > 12s，对 penalty 计数加1 */
         if ((proc->allocations[index]->resource->type == RT_IO) && 
             (proc->allocations[index]->usage_time > 12)) {
-            (*levels) += 1;
+            (*penalty) += 1;
         }
 
         (*total) += cost;
