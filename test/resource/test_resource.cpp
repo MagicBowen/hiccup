@@ -4,7 +4,7 @@
 TEST_CASE( "Test resouce cost compute" ) {
     Resource r1{4, RT_CPU};
     Resource r2{2048, RT_MEMORY};
-    Resource r3{100, RT_IO};
+    Resource r3{100, RT_STORAGE};
 
     Allocation a1{3, &r1};  // CPU 使用3s
     Allocation a2{2, &r2};  // 内存使用2s

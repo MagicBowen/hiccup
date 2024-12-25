@@ -28,7 +28,7 @@ void compute_cost(const Process* proc, int* total, int* penalty) {
                 cost += proc->allocations[index]->usage_time * exceed * 2;
             }
             break;
-        case RT_IO:
+        case RT_STORAGE:
             /* 基本cost为20，如果使用时间超过3s，则超出每s统计 1.5 * 容量 */
             cost += 20;
             if (proc->allocations[index]->usage_time > 3) {
@@ -40,8 +40,8 @@ void compute_cost(const Process* proc, int* total, int* penalty) {
             break;
         }
 
-        /* 如果是 IO 资源且使用时间 > 12s，对 penalty 计数加1 */
-        if ((proc->allocations[index]->resource->type == RT_IO) && 
+        /* 如果是 Storage 资源且使用时间 > 12s，对 penalty 计数加1 */
+        if ((proc->allocations[index]->resource->type == RT_STORAGE) && 
             (proc->allocations[index]->usage_time > 12)) {
             (*penalty) += 1;
         }

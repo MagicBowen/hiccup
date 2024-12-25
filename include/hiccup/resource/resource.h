@@ -14,14 +14,14 @@ extern "C" {
 typedef enum {
     RT_CPU,    /* CPU资源 */
     RT_MEMORY, /* 内存资源 */
-    RT_IO      /* IO资源 */
+    RT_STORAGE /* 存储资源 */
 } ResourceType;
 
 /**
  * 资源
  */
 typedef struct ResourceTag {
-    int capacity;       /* 对于CPU为核数，对于内存是MB容量，对于IO是带宽值 */
+    int capacity;       /* 对于CPU为核数，对于内存是MB容量，对于Storage是带GB容量 */
     ResourceType type;  
 } Resource;
 
