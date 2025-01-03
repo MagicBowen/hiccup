@@ -40,8 +40,8 @@ typedef enum {
  * 物理端口
  */
 typedef struct PhyPortTag {
-    int port_id;       /* 端口ID */
-    int speed;         /* 端口速率 */
+    int port_id;       /* 端口ID，每个芯片内部唯一，从 0 开始 */
+    int speed;         /* 端口速率，单位为 MB */
     LinkStatus status; /* 端口状态 */
 } PhyPort;
 
@@ -49,7 +49,7 @@ typedef struct PhyPortTag {
  * 交换芯片
  */
 typedef struct SwitchChipTag {
-    int chip_id;       /* 芯片ID */
+    int chip_id;       /* 芯片ID，设备内部唯一，从 0 开始 */
     int numOfPorts;    /* 物理端口数 */
     PhyPort ports[CHIP_SDK_PHY_PORT_PER_CHIP]; /* 物理端口 */
 } SwitchChip;
